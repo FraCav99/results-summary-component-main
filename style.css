@@ -1,0 +1,219 @@
+:root {
+  /* Primary */
+  --light-red-hsl: 0, 100%, 67%;
+  --orangey-yellow-hsl: 39, 100%, 56%;
+  --green-teal-hsl: 166, 100%, 37%;
+  --cobalt-blue-hsl: 234, 85%, 45%;
+
+  /* Gradients */
+  --light-slate-blue-hsl: 252, 100%, 67%;
+  --light-royal-blue-hsl: 241, 81%, 54%;
+  --violet-blue-hsl: 256, 72%, 46%;
+  --persian-blue-hsl: 241, 72%, 46%;
+
+  --light-slate-blue: hsl(var(--light-slate-blue-hsl));
+  --light-royal-blue: hsl(var(--light-royal-blue-hsl));
+  --violet-blue: hsla(var(--violet-blue-hsl), 1);
+  --persian-blue: hsla(var(--persian-blue-hsl), 0);
+
+  --blue-gradient: linear-gradient(
+    var(--light-slate-blue),
+    var(--light-royal-blue)
+  );
+
+  --transparent-gradient: linear-gradient(
+    var(--violet-blue),
+    var(--persian-blue)
+  );
+
+  /* Neutral */
+  --white-hsl: 0, 0%, 100%;
+  --pale-blue-hsl: 221, 100%, 96%;
+  --light-lavender-hsl: 241, 100%, 89%;
+  --dark-gray-blue-hsl: 224, 30%, 27%;
+
+  --white: hsl(var(--white-hsl));
+  --pale-blue: hsl(var(--pale-blue-hsl));
+  --light-lavender: hsl(var(--light-lavender-hsl));
+  --dark-gray-blue: hsl(var(--dark-gray-blue-hsl));
+
+  /* Font weights */
+  --fw-500: 500;
+  --fw--700: 700;
+  --fw-800: 800;
+
+  /* Body copy */
+  --body-copy-fs: 1.125rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  min-height: 100vh; /* Fall back if dvh not supported */
+  min-height: 100dvh;
+  line-height: 1.5;
+
+  display: grid;
+  grid-template-rows: 1fr auto;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: var(--body-copy-fs);
+  color: var(--dark-gray-blue);
+}
+
+.summary-card {
+  --border-radius: 2rem;
+  --padding: 2.5rem;
+
+  max-width: 46rem;
+}
+
+.section-title {
+  font-weight: var(--fw-800);
+  font-size: 1.125rem;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    place-items: center;
+  }
+
+  .summary-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0.5rem 1rem 3rem hsl(var(--dark-gray-blue-hsl), 0.2);
+    margin-inline: 1rem;
+  }
+}
+
+.results {
+  background: var(--blue-gradient);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  display: grid;
+  place-items: center;
+  gap: 1.5rem;
+  padding: var(--padding) calc(var(--padding) * 1.5);
+  text-align: center;
+  color: var(--light-lavender);
+  font-size: 1rem;
+}
+
+@media screen and (min-width: 600px) {
+  .results {
+    border-radius: var(--border-radius);
+  }
+}
+
+.result-score {
+  border-radius: 50%;
+  background: var(--transparent-gradient);
+  aspect-ratio: 1 / 1;
+  width: 12rem;
+  display: grid;
+  place-content: center;
+}
+
+.result-score span {
+  display: block;
+  font-size: 5rem;
+  font-weight: var(--fw-800);
+  color: var(--white);
+}
+
+.summary {
+  padding: var(--padding);
+  display: grid;
+  gap: 1rem;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: hsla(var(--item-color), 0.1);
+  color: var(--dark-gray-blue);
+}
+
+.summary-item[data-reaction] {
+  --item-color: var(--light-red-hsl);
+}
+
+.summary-item[data-memory] {
+  --item-color: var(--orangey-yellow-hsl);
+}
+
+.summary-item[data-verbal] {
+  --item-color: var(--green-teal-hsl);
+}
+
+.summary-item[data-visual] {
+  --item-color: var(--cobalt-blue-hsl);
+}
+
+.stat-description {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: hsl(var(--item-color));
+}
+
+.summary-item p {
+  color: hsl(var(--dark-gray-blue-hsl), 0.5);
+}
+
+.summary-score {
+  font-weight: var(--fw-800);
+  color: var(--dark-gray-blue);
+}
+
+.button {
+  border: none;
+  color: var(--white);
+  background-color: var(--dark-gray-blue);
+  padding: 1rem 0;
+  border-radius: 40px;
+  margin-top: 1rem;
+}
+
+.button:hover,
+.button:focus-visible {
+  outline: none;
+  cursor: pointer;
+  background: var(--blue-gradient);
+}
+
+.feedback-title {
+  color: var(--white);
+  font-size: 1.5rem;
+  font-weight: var(--fw--700);
+}
+
+.attribution {
+  font-size: 0.6875rem;
+  text-align: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+  text-decoration: none;
+}
