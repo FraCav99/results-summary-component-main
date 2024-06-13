@@ -1,4 +1,4 @@
-const summarySection = document.getElementById("test");
+const summarySection = document.getElementById("summary");
 const continueBtn = summarySection.lastElementChild;
 
 fetch("./data.json")
